@@ -18,11 +18,13 @@ public:
 	bool empty();
 	bool push(T);
 	T pop();
+	bool destroy();
+	void clear();
 };
 
 
 template<typename T>
-stack<T>::stack(size_t size) : MAXSIZE(size), top(nullptr), base(nullptr), stacksize(0) {
+stack<T>::stack(size_t size) : MAXSIZE(size), top(nullptr),  base(nullptr), stacksize(0) {
 	base = new T[MAXSIZE];
 	top = base;
 }
@@ -95,4 +97,17 @@ T stack<T>::pop() {
 	if (empty())exit(1);
 	stacksize--;
 	return *--top;
+}
+template<typename T>
+bool stack<T>::destroy() {
+	if (!this->base)return false;
+	delete[] this->base;
+	this->base = this->top = nullptr;
+	this->stacksize = this->MAXSIZE = 0;
+	return true;
+}
+template<typename T>
+void stack<T>::clear() {
+	this->stacksize = 0;
+	this->top = this->base;
 }
