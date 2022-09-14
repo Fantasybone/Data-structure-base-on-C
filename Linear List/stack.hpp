@@ -11,15 +11,15 @@ public:
 	~stack();
 
 	stack& operator=(const stack&);
-	size_t getsize();
-	size_t getMAXSIZE();
-	T* getbase();
-	T gettop();
-	bool empty();
-	bool push(T);
-	T pop();
-	bool destroy();
-	void clear();
+	size_t getsize();			//获取大小
+	size_t getMAXSIZE();		//获取容量
+	T* getbase();				//返回栈底指针
+	T gettop();					//返回栈顶元素
+	bool empty();				//判空
+	bool push(const T&);		//压栈
+	T pop();					//出栈并返回元素
+	bool destroy();				//摧毁栈
+	void clear();				//清空
 };
 
 
@@ -87,7 +87,7 @@ bool stack<T>::empty() {				//判断是否为空
 	return top == base;
 }
 template<typename T>
-bool stack<T>::push(T data) {			//压栈
+bool stack<T>::push(const T& data) {			//压栈
 	if (stacksize == MAXSIZE)return false;
 	*top++ = data;
 	stacksize++;

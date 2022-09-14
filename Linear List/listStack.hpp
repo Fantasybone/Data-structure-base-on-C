@@ -15,14 +15,14 @@ public:
 	~listStack();
 
 	listStack<T>& operator=(const listStack<T>&);
-	size_t size();	//获取长度
-	bool push(T);	//压栈
-	T pop();		//出栈
-	T gettop();		//获取栈顶元素
-	void clear();	//清空
-	bool destroy();	//删除
-	void display();	//遍历输出
-	bool empty();	//判空
+	size_t size();			//获取长度
+	bool push(const T&);	//压栈
+	T pop();				//出栈
+	T gettop();				//获取栈顶元素
+	void clear();			//清空
+	bool destroy();			//摧毁栈，释放内存
+	void display();			//遍历输出
+	bool empty();			//判空
 };
 
 
@@ -103,7 +103,7 @@ inline size_t listStack<T>::size() {
 	return this->m_size;
 }
 template<typename T>
-bool listStack<T>::push(T ele) {				//压栈
+bool listStack<T>::push(const T& ele) {				//压栈
 	if (!this->head)return false;
 	stackNode<T>* node = new stackNode<T>;
 	if (!node)return false;
