@@ -1,10 +1,10 @@
 template<class T>
 struct stack {
 private:
-	T* top;
-	T* base;
-	size_t stacksize;
-	size_t MAXSIZE;
+	T* top = nullptr;
+	T* base = nullptr;
+	size_t stacksize = 0;
+	size_t MAXSIZE = 0;
 public:
 	stack(size_t);
 	stack(const stack&);
@@ -24,7 +24,7 @@ public:
 
 
 template<typename T>
-stack<T>::stack(size_t size) : MAXSIZE(size), top(nullptr),  base(nullptr), stacksize(0) {
+stack<T>::stack(size_t size) : MAXSIZE(size){
 	base = new T[MAXSIZE];
 	top = base;
 }
@@ -40,8 +40,9 @@ stack<T>::stack(const stack& s) {
 }
 template<typename T>
 stack<T>::~stack() {
-	delete[] base;
-	base = nullptr;
+	if (this->base) {
+		delete[] this->base;
+	}
 }
 
 
