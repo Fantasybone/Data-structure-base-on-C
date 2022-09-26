@@ -27,8 +27,8 @@ public:
 
 	int depth(Node<T>* p) const;
 	int depth()const;
-	void input(Node<T>* &node);
-	void input(BinaryTree<T>& tree);
+	void input(Node<T>*& node);
+	void input();
 	void Predisplay(Node<T>* p) const;
 	void display()const;
 	void destroy(Node<T>* p);
@@ -73,7 +73,7 @@ inline void BinaryTree<T>::input(Node<T>*& node){
 }
 
 template<class T>
-inline void BinaryTree<T>::input(BinaryTree<T>& tree){
+inline void BinaryTree<T>::input(){
 	input(this->root);
 }
 
